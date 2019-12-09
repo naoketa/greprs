@@ -39,3 +39,27 @@ pub fn search<'a>(query: &str, contents: &'a str) -> Vec<&'a str> {
     }
     results
 }
+
+#[cfg(test)]
+mod test {
+    use super::*;
+    
+    #[test]
+    fn search_word_sensitive() {
+        let query = "Rust";
+        let words = "\
+        Rust
+        Golang
+        Java
+        Scala
+        Kotolin
+        Python
+        Ruby
+        ";
+        assert_eq!(
+            vec!["Rust"],
+            search(query, words)
+        );
+
+    }
+}
